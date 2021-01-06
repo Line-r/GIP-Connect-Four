@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "GIP_Logic_Serial", "GIP_Logic_Serial\GIP_Logic_Serial.vbproj", "{DCFFB84C-9E1C-49FD-9345-0CB0F776EC04}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DCFFB84C-9E1C-49FD-9345-0CB0F776EC04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCFFB84C-9E1C-49FD-9345-0CB0F776EC04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCFFB84C-9E1C-49FD-9345-0CB0F776EC04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCFFB84C-9E1C-49FD-9345-0CB0F776EC04}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {778C875F-B672-40CA-B73D-392725458B51}
+	EndGlobalSection
+EndGlobal

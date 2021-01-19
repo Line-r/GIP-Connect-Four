@@ -11,9 +11,9 @@
         Do While Turn = True
             Dim Incoming As String = SerialPort1.ReadLine
             Dim IncomingInfoArray() As String = Split(Incoming, ",")
-            Dim xPos As Integer = IncomingInfoArray(0)
-            Dim yPos As Integer = IncomingInfoArray(1)
-            Dim Color As String = IncomingInfoArray(2)
+            Dim xPos As Integer = CInt(IncomingInfoArray(0))
+            Dim yPos As Integer = CInt(IncomingInfoArray(1))
+            Dim Color As String = CStr(IncomingInfoArray(2))
 
             Spelbord(xPos, yPos) = Color
 

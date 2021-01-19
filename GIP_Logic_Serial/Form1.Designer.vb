@@ -27,6 +27,10 @@ Partial Class Form1
         Me.btnStart = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
+        'SerialPort1
+        '
+        Me.SerialPort1.PortName = "COM8"
+        '
         'btnStart
         '
         Me.btnStart.Location = New System.Drawing.Point(12, 257)

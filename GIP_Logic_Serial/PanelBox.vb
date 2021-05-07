@@ -1,10 +1,8 @@
 ﻿Public Class PanelBox
     Inherits Panel
-
     Sub New()
         Me.BorderStyle = Windows.Forms.BorderStyle.FixedSingle
     End Sub
-
     Private _used As Boolean
     Public Property Used() As Boolean
         Get

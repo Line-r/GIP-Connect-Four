@@ -75,32 +75,43 @@
     Private Function CheckHor(x As Integer, y As Integer) As CheckData
         Dim lstItems As New List(Of PanelBox)
         Dim curColor As Color = Form1.PlayerTurn.Color
+        Dim lstAImoves As New List(Of PanelBox)
 
-        For intx = x To x + 3
-            If intx > Rows Then
+        lstItems.Add(Grid(x, y))
+
+        For intX = x + 1 To Columns - 1
+            If (intX > Columns - 1) Then
                 Exit For
-            ElseIf Grid(x, intx).Used = True Then
-                If Grid(x, intx).BackColor = curColor Then
-                    lstItems.Add(Grid(x, intx))
+            Else
+                If (Grid(intX, y).Used = True) Then
+                    If (Grid(intX, y).BackColor = curColor) Then
+                        lstItems.Add(Grid(intX, y))
+                    Else
+                            Exit For
+                    End If
                 Else
                     Exit For
                 End If
             End If
         Next
 
-        For intx = x To x - 3 Step -1
-            If intx < 0 Then
+        For intX = x - 1 To 0 Step -1
+            If (intX < 0) Then
                 Exit For
-            ElseIf Grid(x, intx).Used = True Then
-                If Grid(x, intx).BackColor = curColor Then
-                    lstItems.Add(Grid(x, intx))
+            Else
+                If (Grid(intX, y).Used = True) Then
+                    If (Grid(intX, y).BackColor = curColor) Then
+                        lstItems.Add(Grid(intX, y))
+                    Else
+                        Exit For
+                    End If
                 Else
                     Exit For
                 End If
             End If
         Next
 
-        If lstItems.Count > 3 Then
+        If (lstItems.Count > 3) Then
             Return New CheckData(True, lstItems.ToArray())
         Else
             Return New CheckData(False, lstItems.ToArray())
@@ -112,35 +123,46 @@
         Dim lstItems As New List(Of PanelBox)
         Dim curColor As Color = Form1.PlayerTurn.Color
 
-        For inty = y To y + 3
-            If inty > Columns Then
+        lstItems.Add(Grid(x, y))
+
+        For intY = y + 1 To Columns - 1
+            If (intY > Rows - 1) Then
                 Exit For
-            ElseIf Grid(x, inty).Used = True Then
-                If Grid(x, inty).BackColor = curColor Then
-                    lstItems.Add(Grid(x, inty))
+            Else
+                If (Grid(x, intY).Used = True) Then
+                    If (Grid(x, intY).BackColor = curColor) Then
+                        lstItems.Add(Grid(x, intY))
+                    Else
+                        Exit For
+                    End If
                 Else
                     Exit For
                 End If
             End If
         Next
 
-        For inty = y To y - 3 Step -1
-            If inty < 0 Then
+        For intY = y - 1 To 0 Step -1
+            If (intY < 0) Then
                 Exit For
-            ElseIf Grid(x, inty).Used = True Then
-                If Grid(x, inty).BackColor = curColor Then
-                    lstItems.Add(Grid(x, inty))
+            Else
+                If (Grid(x, intY).Used = True) Then
+                    If (Grid(x, intY).BackColor = curColor) Then
+                        lstItems.Add(Grid(x, intY))
+                    Else
+                        Exit For
+                    End If
                 Else
                     Exit For
                 End If
             End If
         Next
 
-        If lstItems.Count > 3 Then
+        If (lstItems.Count > 3) Then
             Return New CheckData(True, lstItems.ToArray())
         Else
             Return New CheckData(False, lstItems.ToArray())
         End If
+
     End Function
 
     Private Function CheckDiagR(x As Integer, y As Integer) As CheckData
@@ -149,37 +171,47 @@
 
         'x + 1, y - 1
 
-        Dim inty As Integer = y
-        Dim intx As Integer = x
+        lstItems.Add(Grid(x, y))
 
-        For intx = x To x + 3
-            If intx > Columns Or inty < 0 Then
+        ' x + 1 | y - 1
+        Dim intY As Integer = y + 1
+        For intX = x + 1 To Columns - 1
+            If (intX > Columns - 1 Or intY > Rows - 1) Then
                 Exit For
-            ElseIf Grid(intx, inty).Used = True Then
-                If Grid(intx, inty).BackColor = curColor Then
-                    lstItems.Add(Grid(intx, inty))
+            Else
+                If (Grid(intX, intY).Used = True) Then
+                    If (Grid(intX, intY).BackColor = curColor) Then
+                        lstItems.Add(Grid(intX, intY))
+                    Else
+                        Exit For
+                    End If
                 Else
                     Exit For
                 End If
             End If
-            inty -= 1
+            intY += 1
         Next
 
 
-        For inty = y To y + 3
-            If intx < 0 Or inty > Rows Then
+        Dim intX1 As Integer = x - 1
+        For intY = y - 1 To 0 Step -1
+            If (intX1 < 0 Or intY < 0) Then
                 Exit For
-            ElseIf Grid(intx, inty).Used = True Then
-                If Grid(intx, inty).BackColor = curColor Then
-                    lstItems.Add(Grid(intx, inty))
+            Else
+                If (Grid(intX1, intY).Used = True) Then
+                    If (Grid(intX1, intY).BackColor = curColor) Then
+                        lstItems.Add(Grid(intX1, intY))
+                    Else
+                        Exit For
+                    End If
                 Else
                     Exit For
                 End If
             End If
-            intx += 1
+            intX1 -= 1
         Next
 
-        If lstItems.Count > 3 Then
+        If (lstItems.Count > 3) Then
             Return New CheckData(True, lstItems.ToArray())
         Else
             Return New CheckData(False, lstItems.ToArray())
@@ -192,37 +224,43 @@
 
         'x + 1, y - 1
 
-        Dim inty As Integer = y
-        Dim intx As Integer = x
-
-        For intx = x To x + 3
-            If intx > Columns Or inty > Rows Then
+        Dim intY As Integer = y - 1
+        For intX = x + 1 To Columns - 1
+            If (intX > Columns - 1 Or intY < 0) Then
                 Exit For
-            ElseIf Grid(intx, inty).Used = True Then
-                If Grid(intx, inty).BackColor = curColor Then
-                    lstItems.Add(Grid(intx, inty))
+            Else
+                If (Grid(intX, intY).Used = True) Then
+                    If (Grid(intX, intY).BackColor = curColor) Then
+                        lstItems.Add(Grid(intX, intY))
+                    Else
+                        Exit For
+                    End If
                 Else
                     Exit For
                 End If
             End If
-            inty += 1
+            intY -= 1
         Next
 
-
-        For inty = y To y - 3 Step -1
-            If intx < 0 Or inty < Rows Then
+        Dim intX1 As Integer = x - 1
+        For intY = y + 1 To Rows - 1
+            If (intX1 < 0 Or intY > Rows - 1) Then
                 Exit For
-            ElseIf Grid(intx, inty).Used = True Then
-                If Grid(intx, inty).BackColor = curColor Then
-                    lstItems.Add(Grid(intx, inty))
+            Else
+                If (Grid(intX1, intY).Used = True) Then
+                    If (Grid(intX1, intY).BackColor = curColor) Then
+                        lstItems.Add(Grid(intX1, intY))
+                    Else
+                        Exit For
+                    End If
                 Else
                     Exit For
                 End If
             End If
-            intx += 1
+            intX1 -= 1
         Next
 
-        If lstItems.Count > 3 Then
+        If (lstItems.Count > 3) Then
             Return New CheckData(True, lstItems.ToArray())
         Else
             Return New CheckData(False, lstItems.ToArray())

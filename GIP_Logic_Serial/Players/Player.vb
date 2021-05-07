@@ -1,7 +1,7 @@
 ﻿Public Class Player
     Implements IPlayer
     Public Sub New(strName As String, Clr As Color)
-        Name = strName
+        Name = "Player"
         Color = Clr
     End Sub
 
